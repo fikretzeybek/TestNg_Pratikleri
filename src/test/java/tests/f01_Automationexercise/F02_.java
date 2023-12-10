@@ -2,14 +2,14 @@ package tests.f01_Automationexercise;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import pages.DemoqaPage;
+import pages.DP;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
 
-public class F02_WebtablesHomework {
+public class F02_ {
 
     @Test
     public void test02() {
@@ -18,7 +18,7 @@ public class F02_WebtablesHomework {
         //1. “https://demoqa.com/webtables” sayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("demoqaUrl"));
         //2. Headers da bulunan basliklari yazdirin
-        DemoqaPage demoqaPage = new DemoqaPage();
+        DP demoqaPage = new DP();
         List<WebElement> baslikElementleriYaziListesi = demoqaPage.baslikElementleriListesi;
         List<String> baslikYazilariListesi = ReusableMethods.stringListeDonustur(baslikElementleriYaziListesi);
         System.out.println("Basliklar : " + baslikYazilariListesi);
@@ -52,9 +52,12 @@ public class F02_WebtablesHomework {
         //10. Page sayfasinda bir method olusturun, Test sayfasindan satir ve sutun
         //sayisini girdigimde bana datayi yazdirsin
 
-        demoqaPage.istenenHucreDatasiniYazdir(2, 4);
-        demoqaPage.istenenHucreDatasiniYazdir(1, 5);
-        demoqaPage.istenenHucreDatasiniYazdir(3, 1);
+        System.out.println("Istenen hucre datasi : " + demoqaPage.istenenHucreDatasiniDondur(2, 4));
+        System.out.println("Istenen hucre datasi : " + demoqaPage.istenenHucreDatasiniDondur(3, 5));
+        System.out.println("Istenen hucre datasi : " + demoqaPage.istenenHucreDatasiniDondur(2, 3));
+        System.out.println("Istenen hucre datasi : " + demoqaPage.istenenHucreDatasiniDondur(1, 6));
+
+
 
 
         Driver.getDriver().quit();
