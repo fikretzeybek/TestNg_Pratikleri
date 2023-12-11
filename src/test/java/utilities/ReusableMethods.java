@@ -2,13 +2,13 @@ package utilities;
 
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -29,7 +29,6 @@ public class ReusableMethods {
 
         return stringlerListesi;
     }
-
     public static void bekle(int saniye) {
 
         try {
@@ -38,7 +37,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
     public static void titleIleSayfaDegistir( String hedefSayfaTitle) {
 
         Set<String> tumWhdSeti = Driver.getDriver().getWindowHandles();
@@ -48,7 +46,7 @@ public class ReusableMethods {
 
             String eachTitle = Driver.getDriver().switchTo().window(each).getTitle();
             if (eachTitle.equals(hedefSayfaTitle)) {
-               break;
+                break;
             }
         }
 
@@ -69,7 +67,6 @@ public class ReusableMethods {
         return null; // bu satirin hic calismayacagini biliyoruz
         // sadece javanin endiselerini gidermek icin yazdik
     }
-
     public static void tumSayfaTakeScreenshot(WebDriver driver) {
         // tum sayfanin fotografini cekip kaydedin
 
@@ -104,7 +101,6 @@ public class ReusableMethods {
 
         ReusableMethods.bekle(5);
     }
-
     public static void tumSayfaTakeScreenshot(String testAdi, WebDriver driver) {
         // tum sayfanin fotografini cekip kaydedin
 
@@ -141,7 +137,6 @@ public class ReusableMethods {
 
         ReusableMethods.bekle(5);
     }
-
     public static void istenenWebelementScreenshot(WebElement istenenWebelement) {
 
         // 1.adim screenshot alacagimiz webelementi locate et
@@ -171,4 +166,37 @@ public class ReusableMethods {
 
 
     }
+    public static void scrollYap(WebDriver driver,WebElement scrollYapilacakElemet){
+        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();",scrollYapilacakElemet);
+    }
+    public static int iframeSayisiniBul(WebDriver driver) {
+        return driver.findElements(By.tagName("iframe")).size();
+    }
+    public static int iframeIndexiniBul(WebDriver driver, String iframeSrc) {
+        int index = 1;
+        List<WebElement> iframeElementLeri = driver.findElements(By.tagName("iframe"));
+        for (WebElement each : iframeElementLeri) {
+            if (each.getAttribute("src").contains(iframeSrc)) {
+                return index;
+            }
+            index++;
+        }
+        return -1; // Eğer iframe bulunamazsa -1 döndürülür
+    }
+    public static void clickPlayButonu(WebDriver driver, String iframeSrc, String playButonXpath) {
+        int iframeIndex = iframeIndexiniBul(driver, iframeSrc);
+        if (iframeIndex != -1) {
+            driver.switchTo().frame(iframeIndex - 1); // Index' i 0' dan baslatmak icin 1 çıkarılır
+            // Bekleme yapin, sureyi ayarlayin
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement playButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playButonXpath)));
+            playButton.click();
+            driver.switchTo().defaultContent();  //iframe' den cikis, isterseniz @Test sayfanizda
+            // kendiniz de yapabilirsiniz
+        } else {
+            System.out.println("Belirtilen src değerine sahip iframe bulunamadı.");
+        }
+    }
 }
+

@@ -16,10 +16,9 @@ public class UniversityTest {
         //1. “http://webdriveruniversity.com/IFrame/index.html” sayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("wduUrl"));
         //2. “Our Products” butonuna basin
-
         Driver.getDriver().switchTo().frame(0);
         UniversityPage universityPage = new UniversityPage();
-        //wduPage.ourProductElementi.click();
+        //universityPage.ourProductElementi.click();
         Driver.getDriver().findElement(By.xpath("//*[@href='products.html']")).click();
         //3. “Cameras product”i tiklayin
         //wduPage.cameraElementi.click();
@@ -34,9 +33,9 @@ public class UniversityTest {
         Driver.getDriver().switchTo().defaultContent();
         Driver.getDriver().findElement(By.xpath("//*[@id='nav-title']")).click();
         //7. "http://webdriveruniversity.com/index.html" adresine gittigini test ed
-        String expectedUrl = "http://webdriveruniversity.com/index.html";
+        String expectedUrl = "https://webdriveruniversity.com/index.html";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl,actualUrl);
+        Assert.assertEquals(actualUrl,expectedUrl);
         ReusableMethods.bekle(3);
         Driver.quitDriver();
     }
