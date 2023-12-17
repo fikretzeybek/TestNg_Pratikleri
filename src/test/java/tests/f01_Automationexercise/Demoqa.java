@@ -1,5 +1,7 @@
 package tests.f01_Automationexercise;
 
+import utilities.Driver;
+
 public class Demoqa {
 
     public void webtableTest(){
