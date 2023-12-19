@@ -13,13 +13,13 @@ public class UseinsiderPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//*[@id='wt-cli-accept-btn']")
+    @FindBy(xpath = "(//*[@role='button'])[3]")
     public WebElement cookiesElementi;
 
     @FindBy(id = "wt-cli-accept-btn")
     public WebElement cookies;
 
-    @FindBy(xpath = "wt-cli-accept-all-btn")
+    @FindBy(xpath = "//*[@id=\"wt-cli-accept-btn\"]")
     public WebElement cookiesElementii;
 
     @FindBy(partialLinkText = "Company")

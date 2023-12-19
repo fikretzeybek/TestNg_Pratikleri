@@ -16,12 +16,11 @@ public class UseinsiderTesti {
         UseinsiderPage usePage=new UseinsiderPage();
         //1. Visit https://useinsider.com/ and check Insider home page is opened or not
         Driver.getDriver().get(ConfigReader.getProperty("useinUrl"));
-        Driver.getDriver().manage().deleteAllCookies();
-
         String expectedUrl=ConfigReader.getProperty("useinUrl");
         String actualUrl=Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl,actualUrl,"homepage is not opened");
-        //usePage.cookies.click();
+        usePage.cookiesElementii.click();
+        ReusableMethods.bekle(2);
         //2. Select “Company” menu in navigation bar, select “Careers” and check Career page, its
         usePage.companyLink.click();
         usePage.careersLink.click();

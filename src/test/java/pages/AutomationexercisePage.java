@@ -17,6 +17,28 @@ public class AutomationexercisePage {
     @FindBy(xpath = "//*[@href='/products']")
     public WebElement productButonu;
 
+    @FindBy(xpath = "//*[text()='All Products']")
+    public WebElement allProductYaziElementi;
+
+    @FindBy(xpath = "//a[@href='/product_details/1']")
+    public WebElement viewProductElementi;
+
+    @FindBy(xpath = "//a[@href='#reviews']")
+    public WebElement writeYourReviewYaziElementi;
+
+    @FindBy(id = "name")
+    public WebElement yourNameKutusu;
+
+    @FindBy(xpath = "//*[text()='Thank you for your review.']")
+    public WebElement thankYouYaziElementi;
+
+
+
+
+
+
+
+
     @FindBy(xpath = "//*[@src='/get_product_picture/1']")
     public WebElement firstProduct;
 
