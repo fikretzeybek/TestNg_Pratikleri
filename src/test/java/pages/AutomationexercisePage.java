@@ -12,7 +12,7 @@ public class AutomationexercisePage {
     }
 
     @FindBy(xpath = "//div[@class='col-sm-4']")
-    public WebElement anasayfa;
+    public WebElement anaSayfa;
 
     @FindBy(xpath = "//*[@href='/products']")
     public WebElement productButonu;
@@ -32,28 +32,21 @@ public class AutomationexercisePage {
     @FindBy(xpath = "//*[text()='Thank you for your review.']")
     public WebElement thankYouYaziElementi;
 
-
-
-
-
-
-
-
     @FindBy(xpath = "//*[@src='/get_product_picture/1']")
-    public WebElement firstProduct;
+    public WebElement firstProductElementi;
 
     @FindBy(xpath = "//*[@data-product-id='1']")
-    public WebElement addToCart;
+    public WebElement addToCart1Butonu;
 
 
     @FindBy(xpath = "//button[@class='btn btn-success close-modal btn-block']")
     public WebElement continuoShopButonu;
 
     @FindBy(xpath = "//*[@src='/get_product_picture/2']")
-    public WebElement secondProduct;
+    public WebElement secondProductElementi;
 
     @FindBy(xpath = "//*[@data-product-id='2']")
-    public WebElement addToCart2;
+    public WebElement addToCart2Butonu;
 
 
     @FindBy(xpath = "//*[text()='View Cart']")
@@ -61,14 +54,14 @@ public class AutomationexercisePage {
 
 
     @FindBy(xpath = "(//*[@class='product_image'])[1]")
-    public WebElement cartProduct1;
+    public WebElement cartProduct1Elementi;
 
     @FindBy(xpath = "(//*[@class='product_image'])[2]")
-    public WebElement cartProduct2;
+    public WebElement cartProduct2Elementi;
 
 
     @FindBy(className = "cart_menu")
-    public WebElement cartBasliklar;
+    public WebElement cartBasliklarElementi;
 
 
 

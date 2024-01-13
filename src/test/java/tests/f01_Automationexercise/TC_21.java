@@ -33,6 +33,7 @@ public class TC_21 {
         //5. Click on 'View Product' button
         page.viewProductElementi.click();
         //6. Verify 'Write Your Review' is visible
+        System.out.println(page.writeYourReviewYaziElementi.getText());
         Assert.assertTrue(page.writeYourReviewYaziElementi.isDisplayed());
         //7. Enter name, email and review
         //8. Click 'Submit' button
@@ -41,14 +42,14 @@ public class TC_21 {
                 .sendKeys(Keys.TAB)
                 .sendKeys("ali@ali.com")
                 .sendKeys(Keys.TAB)
-                .sendKeys("bugunden tezi yok calısmaya son vermek isterdim")
+                .sendKeys("hadi yaz bakalim..")
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.ENTER)
                 .perform();
 
         //9. Verify success message 'Thank you for your review.'
-        Assert.assertTrue(page.thankYouYaziElementi.isDisplayed());
         System.out.println(page.thankYouYaziElementi.getText());
+        Assert.assertTrue(page.thankYouYaziElementi.isDisplayed());
 
         Driver.closeDriver();
     }

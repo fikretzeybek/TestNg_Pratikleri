@@ -8,7 +8,9 @@ import utilities.Driver;
 import java.util.List;
 
 public class DemoqaPage {
+
     public DemoqaPage(){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
